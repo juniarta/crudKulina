@@ -1,55 +1,52 @@
-# Rafi
+# CRUD Kulia
 
-> A starter project with Node.js, Koa, Postgre
+> A starter project with Node.js, Koa, mysql
 
-### Aplikasi Sehat API structure
+### Project API structure
 
 ```
+├── CHANGELOG.md
+├── LICENSE
 ├── README.md
 ├── app
 │   ├── controllers
+│   │   └── UserReviewController.js
+│   ├── database
+│   │   ├── index.js
+│   │   └── migrations
+│   │       └── 20180503170635-user_review.js
 │   ├── helpers
-│   ├── locales
+│   │   └── Utils.js
 │   ├── middlewares
-│   ├─── strategies
+│   │   ├── response.js
+│   │   └── validation.js
 │   ├── models
-│   ├── routes
-│   ├── services
-│   ├── views
-│   ├── worker
-├── assets
-│   ├── css
-│   ├── img
-│   ├── js
-│   ├── upload
-│   └── locales
-├── bin
-├── config
-├── docs
-└── test
-│   ├── integration
-│   ├── unit
-│   ├── web
-│   └── web demo
-├── .jscsrc
+│   │   └── UserReview.js
+│   └── routes
+│       └── api.js
 ├── app.js
-├── bower.json
-├── CHANGELOG.md
+├── config
+│   ├── database.js
+│   └── index.js
 ├── package.json
-├── README.md
-└── start
+├── start
+└── test
+    ├── integration
+    └── unit
+
+12 directories, 16 files
 ```
 
 ## Installation
 
 **Install Node Modules**
 
-`npm install`
+`yarn install`
 
 then run:
 
 ```
-yarn
 yarn run db:refresh
-. start or yarn start
+./start
+or yarn start
 ```

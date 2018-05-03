@@ -2,21 +2,17 @@
   "name": "my-base",
   "version": "0.0.1",
   "description": "Restapi",
-  "repository": "https://bitbucket.org/Willymar/tryout",
+  "repository": "https://github.com/juniarta/crudKulina",
   "main": "app.js",
   "author": "Willymar",
   "apidoc": {
-    "title": "Documentation tryout",
+    "title": "Documentation",
     "url": "https://willymarj.me/tryout/api/v1"
   },
   "license": "Proprietary",
   "scripts": {
-    "jscs": "jscs .",
     "start": "DEBUG=app NODE_ENV=development nodemon --ext \".js|.css|.html\" app.js",
     "debug": "DEBUG=app NODE_ENV=development node-debug app.js",
-    "integration": "DEBUG=test,app NODE_ENV=test node_modules/mocha/bin/mocha --reporter spec --timeout 10000 test/integration/**/*.js",
-    "webdemo": "node_modules/mocha/bin/mocha test/webdemo/**/*.js --timeout 20000",
-    "web": "node_modules/mocha/bin/mocha test/web/**/*.js --timeout 20000",
     "db:refresh": "node_modules/.bin/sequelize db:migrate && node_modules/.bin/sequelize db:seed:all"
   },
   "dependencies": {
