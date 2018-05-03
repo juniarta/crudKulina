@@ -3,7 +3,7 @@ node_modules
 template_docs
 bower_components
 *.log
-*.lock.json
+*-lock.json
 *.lock
 .tmp
 .idea
