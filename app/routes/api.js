@@ -1,7 +1,7 @@
 const Router = require(`koa-router`);
 const koaBody = require(`koa-body`)({ multipart: true });
 
-const QuestionController = require(`../controllers/QuestionController`);
+const UserReviewController = require(`../controllers/UserReviewController`);
 
 module.exports = (app) => {
   const router = new Router({
@@ -11,13 +11,15 @@ module.exports = (app) => {
   // CRUD Question
   router.get(`/`, (ctx, next) => {
     ctx.res.ok({
-      name: process.env.DB_DRIVER,
+      wellcome: `Selamat Datang Kawan`,
     });
   });
-  router.get(`/question`, QuestionController.listQuestion);
-  router.post(`/question`, QuestionController.addQuestion);
-  router.put(`/question/:id`, QuestionController.updateQuestion);
-  router.delete(`/question/:id`, QuestionController.deleteQuestion);
+  router.get(`/review`, UserReviewController.listReview);
+  router.post(`/review`, UserReviewController.addReview);
+  router.put(`/review/:id`, UserReviewController.updateReview);
+  router.delete(`/review/:id`, UserReviewController.deleteReview);
+
+  router.get(`/time`, UserReviewController.listDate);
 
   app.use(router.routes()).use(router.allowedMethods());
 };

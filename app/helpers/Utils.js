@@ -2,7 +2,6 @@
  * Created by willymar on 5/18/17.
  */
 
-
 const _ = require(`lodash`);
 const moment = require(`moment-timezone`);
 const path = require(`path`);
@@ -250,6 +249,9 @@ module.exports = {
   getTimeEpoch() {
     // return moment.tz(`Asia/Jakarta`).unix() + (3600 * 7);
     return moment.tz(`Asia/Jakarta`).unix();
+  },
+  getHumanEpoch(epoch) {
+    return moment.unix(epoch).format(`dddd, MMMM Do, YYYY h:mm:ss A`);
   },
 
   getDifferentTime(timeStart, timeEnd) {

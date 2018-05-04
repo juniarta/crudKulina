@@ -21,6 +21,10 @@ const UserReview = Database.define(
     user_id: {
       type: Sequelize.INTEGER,
     },
+    rating: {
+      type: Sequelize.STRING,
+    },
+    review: { type: Sequelize.STRING },
     created_at: { type: Sequelize.INTEGER, defaultValue: Utils.getTimeEpoch() },
     updated_at: { type: Sequelize.INTEGER, defaultValue: Utils.getTimeEpoch() },
   },
