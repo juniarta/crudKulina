@@ -19,7 +19,8 @@ module.exports = (app) => {
   router.put(`/review/:id`, UserReviewController.updateReview);
   router.delete(`/review/:id`, UserReviewController.deleteReview);
 
-  router.get(`/time`, UserReviewController.listDate);
+  router.post(`/prima`, UserReviewController.bilanganPrima);
+  router.post(`/fibonacci`, UserReviewController.fibonacci);
 
   app.use(router.routes()).use(router.allowedMethods());
 };

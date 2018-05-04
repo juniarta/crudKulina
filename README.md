@@ -37,6 +37,10 @@
 12 directories, 16 files
 ```
 
+## Postman Docs
+
+https://documenter.getpostman.com/view/591935/collection/RW1ejx71
+
 ## Installation
 
 **Install Node Modules**

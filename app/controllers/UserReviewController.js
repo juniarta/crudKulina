@@ -64,8 +64,36 @@ module.exports = {
     ctx.res.ok(data);
   },
 
-  listDate: async (ctx, next) => {
-    const data = Utils.getLocalTime(1525401376);
+  bilanganPrima: async (ctx, next) => {
+    const bilangan = ctx.request.body.bilangan;
+    let data = null;
+    for (let i = 1; i < bilangan; i++) {
+      let counter = 0;
+      for (let j = 1; j < i; j++) {
+        if (i % j === 0) {
+          counter += 1;
+        }
+      }
+      if (counter === 2) {
+        console.log(`${i} adalah bilangan prima`);
+        data = i;
+      }
+    }
     ctx.res.ok(data);
+  },
+
+  fibonacci: async (ctx, next) => {
+    let a = 1,
+      b = 0,
+      temp;
+
+    while (ctx.request.body.number >= 0) {
+      temp = a;
+      a += b;
+      b = temp;
+      ctx.request.body.number--;
+    }
+
+    ctx.res.ok(b);
   },
 };
