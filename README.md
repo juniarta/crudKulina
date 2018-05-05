@@ -41,6 +41,10 @@
 
 https://documenter.getpostman.com/view/591935/collection/RW1ejx71
 
+## Docs Firebase AUTH
+
+https://documenter.getpostman.com/view/591935/collection/RW1eky1D
+
 ## Installation
 
 **Install Node Modules**
