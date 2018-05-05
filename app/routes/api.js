@@ -2,6 +2,7 @@ const Router = require(`koa-router`);
 const koaBody = require(`koa-body`)({ multipart: true });
 
 const UserReviewController = require(`../controllers/UserReviewController`);
+const AuthController = require(`../controllers/AuthController`);
 
 module.exports = (app) => {
   const router = new Router({
@@ -21,6 +22,9 @@ module.exports = (app) => {
 
   router.post(`/prima`, UserReviewController.bilanganPrima);
   router.post(`/fibonacci`, UserReviewController.fibonacci);
+
+  router.post(`/user`, AuthController.createUser);
+  router.post(`/login`, AuthController.siginUser);
 
   app.use(router.routes()).use(router.allowedMethods());
 };
