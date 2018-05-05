@@ -48,8 +48,10 @@ https://documenter.getpostman.com/view/591935/collection/RW1eky1D
 ## Installation
 
 **Install Node Modules**
-
 `yarn install`
+
+**Config your enviroment**
+`cp config/.env.example config/.env`
 
 then run:
 
@@ -57,4 +59,5 @@ then run:
 yarn run db:refresh
 ./start
 or yarn start
+open localhost:9500/api/v1
 ```

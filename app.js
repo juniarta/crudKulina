@@ -58,6 +58,6 @@ app.use(async (ctx, next) => {
 // routes
 require(`./app/routes/api`)(app);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 9500, () => {
   console.log(`${packages.name} run on port ${JSON.stringify(process.env.PORT)}`);
 });
