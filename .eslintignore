@@ -14,3 +14,4 @@ assets/
 service-worker.js
 apidoc
 helpers
+/app/middlewares

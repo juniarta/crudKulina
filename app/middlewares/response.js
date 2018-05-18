@@ -31,7 +31,7 @@ const statusCodes = {
 };
 
 module.exports = (opts = {}) => {
-  const { contentType = `text/plain` } = opts;
+  const { contentType = 'text/plain' } = opts;
 
   return async (ctx, next) => {
     // 100 CONTINUE
@@ -48,7 +48,7 @@ module.exports = (opts = {}) => {
         meta: {
           code: statusCodes.OK,
           status: true,
-          messages: `Ok`,
+          messages: 'Ok',
         },
         data: res,
       };
@@ -62,7 +62,7 @@ module.exports = (opts = {}) => {
         meta: {
           code: statusCodes.CREATED,
           status: true,
-          messages: `Created`,
+          messages: 'Created',
         },
         data: res,
       };
@@ -83,7 +83,7 @@ module.exports = (opts = {}) => {
         meta: {
           code: statusCodes.NO_CONTENT,
           status: true,
-          messages: `No Content`,
+          messages: 'No Content',
         },
       };
       ctx.status = statusCodes.NO_CONTENT;
@@ -109,7 +109,7 @@ module.exports = (opts = {}) => {
         meta: {
           code: statusCodes.UNAUTHORIZED,
           status: false,
-          messages: `Unauthorized`,
+          messages: 'Unauthorized',
         },
       };
       ctx.status = statusCodes.UNAUTHORIZED;
@@ -122,7 +122,7 @@ module.exports = (opts = {}) => {
         meta: {
           code: statusCodes.FORBIDDEN,
           status: false,
-          messages: `Forbidden`,
+          messages: 'Forbidden',
         },
       };
       ctx.status = statusCodes.FORBIDDEN;
@@ -135,7 +135,7 @@ module.exports = (opts = {}) => {
         meta: {
           code: statusCodes.NOT_FOUND,
           status: false,
-          messages: `Not Found`,
+          messages: 'Not Found',
         },
       };
       ctx.status = statusCodes.NOT_FOUND;
@@ -149,7 +149,7 @@ module.exports = (opts = {}) => {
     };
 
     // 418 I'M A TEAPOT
-    ctx.res.teapot = (res = `I'm a teapot`) => {
+    ctx.res.teapot = (res = 'I\'m a teapot') => {
       ctx.type = contentType;
       ctx.body = res;
       ctx.status = statusCodes.IM_A_TEAPOT;

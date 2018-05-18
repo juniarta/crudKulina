@@ -1,10 +1,10 @@
-const Sequelize = require(`sequelize`);
+const Sequelize = require('sequelize');
 
-const Database = require(`../database`);
-const Utils = require(`../helpers/Utils`);
+const Database = require('../database');
+const Utils = require('../helpers/Utils');
 
 const UserReview = Database.define(
-  `user_review`,
+  'user_review',
   {
     id: {
       type: Sequelize.INTEGER,
@@ -31,6 +31,6 @@ const UserReview = Database.define(
   {
     timestamps: false,
     freezeTableName: true,
-  }
+  },
 );
 module.exports = UserReview;

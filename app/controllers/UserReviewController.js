@@ -1,11 +1,15 @@
+// Libs
+const moment = require('moment-timezone');
+
 // Utils
-const Utils = require(`../helpers/Utils`);
+// const Utils = require('../helpers/Utils');
+const logger = require('../../config/logger');
 
 // models
-const UserReview = require(`../models/UserReview`);
+const UserReview = require('../models/UserReview');
 
 module.exports = {
-  addReview: async (ctx, next) => {
+  addReview: async (ctx) => {
     const data = {
       order_id: ctx.request.body.order_id,
       product_id: ctx.request.body.product_id,
@@ -13,87 +17,92 @@ module.exports = {
       rating: ctx.request.body.rating,
       review: ctx.request.body.review,
     };
-    const insert = await UserReview.create(data);
-    ctx.res.ok(insert);
+    try {
+      const insert = await UserReview.create(data);
+      ctx.res.ok(insert);
+    } catch (error) {
+      logger.error(error);
+    }
   },
 
-  updateReview: async (ctx, next) => {
+  updateReview: async (ctx) => {
     const data = await UserReview.findOne({
       where: {
         id: ctx.params.id,
       },
     });
     if (!data) {
-      return ctx.res.notFound();
+      ctx.res.notFound();
     }
 
-    data.order_id = ctx.request.body.order_id;
-    data.product_id = ctx.request.body.product_id;
-    data.user_id = ctx.request.body.user_id;
-    data.rating = ctx.request.body.rating;
-    data.review = ctx.request.body.review;
+    try {
+      data.order_id = ctx.request.body.order_id;
+      data.product_id = ctx.request.body.product_id;
+      data.user_id = ctx.request.body.user_id;
+      data.rating = ctx.request.body.rating;
+      data.review = ctx.request.body.review;
 
-    const update = await data.save();
+      const update = await data.save();
 
-    ctx.res.ok(update);
+      ctx.res.ok(update);
+    } catch (error) {
+      console.log(error);
+    }
   },
 
-  deleteReview: async (ctx, next) => {
+  deleteReview: async (ctx) => {
     const data = {
       where: {
         id: ctx.params.id,
       },
     };
-    const delData = await UserReview.destroy(data);
-    if (delData === 0) {
-      ctx.res.notFound();
-    } else {
-      ctx.res.noContent();
+    try {
+      const delData = await UserReview.destroy(data);
+
+      if (delData === 0) {
+        ctx.res.notFound();
+      } else {
+        ctx.res.noContent();
+      }
+    } catch (error) {
+      console.log(error);
     }
   },
 
-  listReview: async (ctx, next) => {
+  listReview: async (ctx) => {
     const offset = ctx.query.offset || 0;
     const limit = ctx.query.limit || 10;
-    const order = ctx.query.order === `asc` ? `ASC` : `DESC` || `DESC`;
+    const order = ctx.query.order === 'asc' ? 'ASC' : 'DESC' || 'DESC';
     const data = await UserReview.findAll({
-      order: [[`id`, order]],
+      order: [['id', order]],
       offset: offset * limit,
       limit,
     });
     ctx.res.ok(data);
   },
 
-  bilanganPrima: async (ctx, next) => {
-    const bilangan = ctx.request.body.bilangan;
+  bilanganPrima: async (ctx) => {
+    const { bilangan } = ctx.request.body.bilangan;
     let data = null;
-    for (let i = 1; i < bilangan; i++) {
+    for (let i = 1; i < bilangan; i += 1) {
       let counter = 0;
-      for (let j = 1; j < i; j++) {
+      for (let j = 1; j < i; j += 1) {
         if (i % j === 0) {
           counter += 1;
         }
       }
       if (counter === 2) {
-        console.log(`${i} adalah bilangan prima`);
         data = i;
       }
     }
     ctx.res.ok(data);
   },
 
-  fibonacci: async (ctx, next) => {
-    let a = 1,
-      b = 0,
-      temp;
-
-    while (ctx.request.body.number >= 0) {
-      temp = a;
-      a += b;
-      b = temp;
-      ctx.request.body.number--;
-    }
-
-    ctx.res.ok(b);
+  fibonacci: async (ctx) => {
+    console.log(new Date().valueOf());
+    console.log(new Date().getUTCMilliseconds());
+    console.log(moment.tz('Asia/Jakarta').unix());
+    logger.info('error with data ku');
+    ctx.res.ok('shit');
   },
 };
