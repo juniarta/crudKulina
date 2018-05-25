@@ -15,6 +15,7 @@ const logger = require('./config/logger');
 const mw = require('./app/middlewares/validation');
 const responseHandler = require('./app/middlewares/response');
 const packages = require('./package.json');
+require('dotenv').config();
 
 Raven.config(process.env.SENTRYKEY).install();
 
@@ -26,7 +27,7 @@ app.use(views(`${__dirname}/views`, {
 }));
 
 // Database
-require('./config');
+// require('./config');
 require('./app/database');
 
 // Setup KOA

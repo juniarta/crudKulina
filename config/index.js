@@ -2,11 +2,8 @@ const _ = require('lodash');
 const path = require('path');
 
 // import .env variables
-require('dotenv-safe').load({
-  allowEmptyValues: true,
-  path: path.join(__dirname, '../config/.env'),
-  sample: path.join(__dirname, '../config/.env.example'),
-});
+// require('dotenv').config();
+// require('dotenv').config();
 
 module.exports = _.merge(require('./'), {
   env: process.env.NODE_ENV,

@@ -2,6 +2,7 @@ const Router = require('koa-router');
 
 const UserReviewController = require('../controllers/UserReviewController');
 const AuthController = require('../controllers/AuthController');
+const NewsController = require('../controllers/NewsController');
 
 module.exports = (app) => {
   const router = new Router({
@@ -14,6 +15,10 @@ module.exports = (app) => {
       wellcome: 'Selamat Datang Kawan',
     });
   });
+
+  router.get('/news1', NewsController.fromSdk);
+  router.get('/news2', NewsController.fromUrl);
+
   router.get('/review', UserReviewController.listReview);
   router.post('/review', UserReviewController.addReview);
   router.put('/review/:id', UserReviewController.updateReview);

@@ -20,8 +20,6 @@
 └── test
     ├── integration
     └── unit
-
-12 directories, 16 files
 ```
 
 ## Postman Docs
